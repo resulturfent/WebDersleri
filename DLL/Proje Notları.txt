@@ -1,0 +1,11 @@
+﻿
+
+ORM=> Object Relation Mapping/Manager
+C# EF=> 
+ Linq
+ -------------------
+1) Ado.Net
+   => SQL kodları string olarak c3 içinde yazılır
+2) Model DB=> Database de hazır olan bir db projeye Model olarak bağlanılır
+3) Code Model=> Database de hazır olan bir db, projeye kod ile bağlanılır
+4) Code First=> Her şey proje tarafında kod ile yapılır
