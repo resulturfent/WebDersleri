@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.16" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ders4_1_BLL\Ders4_1_BLL.csproj" />
+    <ProjectReference Include="..\Ders4_1_DLL\Ders4_1_DLL.csproj" />
+  </ItemGroup>
+
+
+
+  
+
+</Project>
