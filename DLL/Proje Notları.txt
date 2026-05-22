@@ -9,3 +9,24 @@ C# EF=>
 2) Model DB=> Database de hazır olan bir db projeye Model olarak bağlanılır
 3) Code Model=> Database de hazır olan bir db, projeye kod ile bağlanılır
 4) Code First=> Her şey proje tarafında kod ile yapılır
+--------------------------------------------------------------
+--Code First??
+--Tools=> Nuget Package Manager=> Package Manager Console ile aşağıdaki komutları sırasıyla çalıştırırız
+
+ 1)Database oluşturma işlemi appsettings.json dosyasında bulunan connection string ile yapılır. Bu dosyada, veritabanına bağlanmak için gerekli olan bilgiler (sunucu adı, veritabanı adı, kullanıcı adı, şifre vb.) yer alır. EF, bu bilgileri kullanarak veritabanını oluşturur ve yönetir. appsettings.json içinde tanımlanan db adres bilgileri EF tarafında Program.cs içinde tanımlanan DbContext sınıfında kullanılır. Bu sınıf, veritabanı işlemlerini yönetir ve appsettings.
+ 
+ 2)Package Manager Console  proje seçim kısmında projenin seçilmesi gerekir. Bu, migration(projedeki db ayarlarının serverdeki db ye gönderilmesi) işlemlerinin doğru projeye uygulanmasını sağlar. Proje seçimi, veritabanı class'ının (HepeiNerdeDB) hangi katmanda ise o seçilir (DLL katmanında)
+
+ 3)Set as started project=> bu yöntem ile projede db adresi hangi katmanda tanımlı ise o şekilde seçilir. Bizim projede WEB altındadır
+
+ 4)add-migration migrationName(migrationName,bir değişken gibidir, değişken kurallarına göre yazılacak)
+
+ 5)add-migration =>hazır bir EF(Entity Framework) komutudur. Bu kod ve migration adı yazılarak migration işlemi yapılır.
+ *Eğer daha önce veritabanı oluşturulmuşsa ve bu komut çalıştırılırsa, veritabanında yapılan değişiklikler migration adıyla birlikte bir klasör oluşturulur ve bu klasörün içinde iki adet kod dosyası oluşur. Bu kod dosyaları, yapılan değişikliklerin veritabanına nasıl uygulanacağını tanımlar. Eğer veritabanı oluşturulmamışsa, bu komut veritabanını oluşturur ve ardından yapılan değişiklikleri tanımlayan kod dosyalarını oluşturur.
+
+ 6)add- migration başarılı olursa , ilk migration ise Migration adında bir klasör veritabanı class'ının olduğu katmanda (DLL)  oluşur, eğer ilk migration değilse daha önce oluştturulmuş olan Migration klasörünün içine yeni bir klasör oluşturulur ve bu klasörün adı migrationName olarak belirlenir. Bu klasörün içinde iki adet kod dosyası oluşur. Bu kod dosyaları, yapılan değişikliklerin veritabanına nasıl uygulanacağını tanımlar.
+   
+   Remove-Migration Nedir_
+   NOT=> Eğer migration istenilen şekilde oluşmadıysa migrationı silmek için Package Manager Console'da "Remove-Migration" komutu kullanılır. Bu komut, son oluşturulan migration'ı siler ve yapılan değişiklikleri geri alır. Eğer birden fazla migration oluşturulmuşsa, bu komut her seferinde son oluşturulan migration'ı siler. Migration'lar sırasıyla oluşturulduğu için, istenilen migration'ı silmek için bu komutun birkaç kez çalıştırılması gerekebilir.
+
+ 7)update-database => bu komut, yapılan değişikliklerin veritabanına uygulanmasını sağlar. Bu komut çalıştırıldığında, migration klasöründe bulunan kod dosyaları sırasıyla çalıştırılır ve yapılan değişiklikler veritabanına uygulanır. Eğer update-database komutu başarılı bir şekilde çalışırsa, veritabanında yapılan değişiklikler güncellenir ve yeni bir migration klasörü oluşturulmaz. Ancak, eğer update-database komutu sırasında bir hata oluşursa, yapılan değişiklikler veritabanına uygulanmaz ve hata mesajı görüntülenir. Bu durumda, hatayı düzeltmek için gerekli adımlar atılmalıdır ve ardından update-database komutu tekrar çalıştırılmalıdır.
