@@ -15,5 +15,14 @@ public class UrunConfiguration : IEntityTypeConfiguration<Urunler>
         builder.Property(k => k.Fiyat).IsRequired(true);//.HasDefaultValue("decimal(18,2)");
         builder.Property(k => k.Aciklama).IsRequired(false).HasMaxLength(500);
 
+
+        // 1-Kategori , 1'den fazla(withMany) Ürün ile eşleşebilir
+        // tablo arasında ilişkisel (relation) yapısını CodeFirst ile yapılması aşağıdak gibi olacaktır
+        builder.HasOne(u => u.Kategoriler).WithMany(k => k.Urunler).HasForeignKey(u => u.KategorilerId);
+
+        //HasForeignKey(h=>h.KategoriId)=> FK yapar
+        //OnDelete(DeleteBehavior.Cascade)=> silinme durumunda bağlı olan ürünleri de siler. Silme işlemi kesinlikle olmayacaktır, pasif silme yapılacağında bu alanı kullanmıyacağız
+
+
     }
 }

@@ -2,6 +2,8 @@
 
 public  class Urunler
 {
+  
+
     public int Id { get; set; }
     public string Adi { get; set; }
     public int Stok { get; set; }
@@ -9,7 +11,7 @@ public  class Urunler
     public string Aciklama { get; set; }
     public DateTime EklemeTarihi { get; set; }
 
-    public int KategoriId { get; set; }
+    public int KategorilerId { get; set; }
     //bağlama (Diagram-relation) işlemleri
     //1 ürünün 1 tane kategorisi vardır
     public Kategoriler Kategoriler { get; set; }

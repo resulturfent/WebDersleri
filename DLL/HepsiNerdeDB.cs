@@ -21,6 +21,7 @@ public class HepsiNerdeDB : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         //bu metot, Entity Framework Core'un model oluşturma sürecinde çağrılır ve veritabanı şemasını yapılandırmak için kullanılır. Bu metot içinde, Fluent API kullanarak varlıkların özelliklerini, ilişkilerini ve diğer yapılandırmalarını tanımlayabilirsiniz. Örneğin, tabloların anahtarlarını, ilişkilerini, veri türlerini ve diğer kısıtlamaları belirleyebilirsiniz. OnModelCreating metodu, veritabanı şemasının nasıl oluşturulacağını ve yapılandırılacağını kontrol etmek için önemli bir yerdir.
+        //modelBuilder.Entity<Urunler>().HasOne(u => u.Kategoriler).WithMany(k => k.Urunler).HasForeignKey(u => u.KategoriId);
         base.OnModelCreating(modelBuilder);
     }
 }
