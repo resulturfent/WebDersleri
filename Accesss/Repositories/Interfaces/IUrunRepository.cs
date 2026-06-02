@@ -2,7 +2,7 @@
 
 namespace Accesss.Repositories.Interfaces;
 
-public interface IUrunRepository
+public interface IUrunRepository: IGenericRepository<Urunler>
 {
     public List<Urunler> EnCokKalanUrunler();
 
