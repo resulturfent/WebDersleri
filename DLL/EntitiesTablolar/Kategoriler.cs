@@ -1,8 +1,9 @@
-﻿namespace DLL.EntitiesTablolar;
+﻿using DLL.Base;
 
-public class Kategoriler
+namespace DLL.EntitiesTablolar;
+
+public class Kategoriler:BaseTablo
 {
-    public int Id { get; set; }
     public string Adi { get; set; }
     //1 kategoride 1'den fazla ürün vardır, bu durumda bağlantı için ürünleri 1'den fazla getirecek şekilde bağlamamız gerekli
     //

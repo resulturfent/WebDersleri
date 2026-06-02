@@ -1,15 +1,13 @@
-﻿namespace DLL.EntitiesTablolar;
+﻿using DLL.Base;
 
-public  class Urunler
+namespace DLL.EntitiesTablolar;
+
+public  class Urunler:BaseTablo
 {
-  
-
-    public int Id { get; set; }
     public string Adi { get; set; }
     public int Stok { get; set; }
     public decimal Fiyat { get; set; }
     public string Aciklama { get; set; }
-    public DateTime EklemeTarihi { get; set; }
 
     public int KategorilerId { get; set; }
     //bağlama (Diagram-relation) işlemleri
