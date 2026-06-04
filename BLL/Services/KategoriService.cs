@@ -30,4 +30,9 @@ public class KategoriService : IKategoriService
         return ekle;
 
     }
+
+    public List<Kategoriler> List()
+    {
+        return _kategoriRepository.HepsiniListele();
+    }
 }

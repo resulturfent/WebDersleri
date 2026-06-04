@@ -1,3 +1,7 @@
+using Accesss.Repositories;
+using Accesss.Repositories.Interfaces;
+using BLL.Services;
+using BLL.Services.IServices;
 using DLL;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +15,11 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+        builder.Services.AddScoped<IKategoriService, KategoriService>();//DI için son adım. KategoriService sınıfını IKategoriService arayüzüne bağladık. Bu sayede IKategoriService türünde bir nesne istediğimizde, KategoriService sınıfının bir örneği sağlanacak.
 
+
+
+        builder.Services.AddScoped<IKategoriRepository, KategoriRepository>();
 
         string connectionString = builder.Configuration.GetConnectionString("HepsiNerdeDBAdres");
         builder.Services.AddDbContext<HepsiNerdeDB>(options => options.UseSqlServer(connectionString));

@@ -1,14 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BLL.Services;
+using BLL.Services.IServices;
+using Microsoft.AspNetCore.Mvc;
 
 namespace UI.WEB.Controllers;
 
 public class KategoriController : Controller
 {
 
+    private readonly IKategoriService _kategoriService;//newlemeden kullanma biçimi
+
+
+    public KategoriController(IKategoriService kategoriService)
+    {
+        _kategoriService = kategoriService;
+    }
+
+
     [HttpGet]
     public IActionResult List()
     {
-        return View();
+        var list = _kategoriService.List();
+        return View(list);
     }
 
 
