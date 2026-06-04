@@ -16,7 +16,8 @@ public class GenericRepository<TEntityTablo> : IGenericRepository<TEntityTablo> 
 
     public void Ekle(TEntityTablo tablo)
     {
-        throw new NotImplementedException();
+        _hepsiNerdeDB.Set<TEntityTablo>().Add(tablo);//EF ile yapılan bu işlem eklemek için son işlemdir. DB ye Add ile kayıt ekleneceğini bildirir
+        _hepsiNerdeDB.SaveChanges();//EF ile yapılan bu işlem eklenen kayıtların db ye yansımasını sağlar
     }
 
     public void Guncelle(TEntityTablo tablo)

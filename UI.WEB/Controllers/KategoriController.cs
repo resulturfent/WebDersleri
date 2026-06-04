@@ -1,5 +1,6 @@
 ﻿using BLL.Services;
 using BLL.Services.IServices;
+using DLL.EntitiesTablolar;
 using Microsoft.AspNetCore.Mvc;
 
 namespace UI.WEB.Controllers;
@@ -29,4 +30,18 @@ public class KategoriController : Controller
     {
         return View();
     }
+
+    [HttpPost]
+    public IActionResult Ekle(Kategoriler  kategori)
+    {
+        var result=_kategoriService.Ekle(kategori);
+
+        if (result != null)
+        {
+            return RedirectToAction("List");
+        }   
+        ViewBag.error = "Kategori eklenirken bir hata oluştu.";
+        return View();
+    }
+
 }
