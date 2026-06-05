@@ -22,7 +22,8 @@ public class GenericRepository<TEntityTablo> : IGenericRepository<TEntityTablo> 
 
     public void Guncelle(TEntityTablo tablo)
     {
-        throw new NotImplementedException();
+        _hepsiNerdeDB.Set<TEntityTablo>().Entry(tablo).State = EntityState.Modified;//EF ile yapılan bu işlem güncellemek için son işlemdir. DB ye Update ile kayıt güncelleneceğini bildirir
+        _hepsiNerdeDB.SaveChanges();//EF ile yapılan bu işlem güncellenen kayıtların db ye yansımasını sağlar
     }
 
     public List<TEntityTablo> HepsiniListele()
@@ -36,5 +37,11 @@ public class GenericRepository<TEntityTablo> : IGenericRepository<TEntityTablo> 
     public void Sil(int id)
     {
         throw new NotImplementedException();
+    }
+
+    public TEntityTablo GetirIdIle(int id)
+    {
+        var varmiData= _hepsiNerdeDB.Set<TEntityTablo>().Find(id);
+        return varmiData;
     }
 }

@@ -10,5 +10,6 @@ public interface  IGenericRepository<TEntityTablo> where TEntityTablo : class
     public void Ekle(TEntityTablo tablo);
     public void Guncelle(TEntityTablo tablo);
     public void Sil(int id);
+   public TEntityTablo GetirIdIle(int id);
 
 }

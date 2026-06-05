@@ -32,16 +32,41 @@ public class KategoriController : Controller
     }
 
     [HttpPost]
-    public IActionResult Ekle(Kategoriler  kategori)
+    public IActionResult Ekle(Kategoriler kategori)
     {
-        var result=_kategoriService.Ekle(kategori);
+        var result = _kategoriService.Ekle(kategori);
 
         if (result != null)
         {
             return RedirectToAction("List");
-        }   
+        }
         ViewBag.error = "Kategori eklenirken bir hata oluştu.";
         return View();
+    }
+
+
+    [HttpGet]
+    public IActionResult Guncelle(int id)
+    {
+        var kategori = _kategoriService.GetirIdIle(id);
+
+        if (kategori == null)
+        {
+            return RedirectToAction("List");//List methoduna yönlendir RedirectToAction("List");
+        }
+        return View(kategori);
+    }
+
+    [HttpPost]
+    public IActionResult Guncelle(int id, string adi)
+    {
+        var result = _kategoriService.Guncelle(id, adi);
+
+        if (result != null)
+        {
+            return RedirectToAction("List");
+        }
+        return View();//??
     }
 
 }

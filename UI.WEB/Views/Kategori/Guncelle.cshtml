@@ -1,0 +1,46 @@
+﻿@using DLL.EntitiesTablolar
+
+@model Kategoriler
+
+
+<div class="container mt-4">
+    <h2>Kategori Güncelle</h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6 col-lg-4">
+            <form asp-action="Guncelle" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Adi" class="control-label fw-bold">Kategori Adı</label>
+                    <input asp-for="Adi" class="form-control" value="@Model.Adi" />
+                    <span asp-validation-for="Adi" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="EklenmeTarihi" class="control-label fw-bold">Eklenme Tarihi</label>
+                    <input asp-for="EklenmeTarihi" type="text" class="form-control" value="@Model.EklenmeTarihi" readonly />
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="EkleyenId" class="control-label fw-bold">Ekleyen ID</label>
+                    <input asp-for="EkleyenId" class="form-control" value="@Model.EkleyenId" readonly />
+                </div>
+
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn btn-warning px-4 me-2">
+                        <i class="bi bi-plus-circle"></i> Güncelle
+                    </button>
+                    <a asp-action="List" class="btn btn-secondary">Listeye Geri Dön</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

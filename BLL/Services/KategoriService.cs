@@ -19,20 +19,53 @@ public class KategoriService : IKategoriService
 
     public Kategoriler Ekle(Kategoriler kategoriler)
     {
-        Kategoriler ekle = new Kategoriler();//boş bir kategori nesnesi oluşturduk.
+        try
+        {
+            Kategoriler ekle = new Kategoriler();//boş bir kategori nesnesi oluşturduk.
 
-        ekle.Adi = kategoriler.Adi;
-        ekle.EklenmeTarihi = DateTime.Now;
-        ekle.EkleyenId = 1;//şimdilik ekleyen id'sini 1 yapıyoruz.
-        //_kategoriRepository1.Ekle(ekle);//kategori ekleme işlemi yapıyoruz ama garbage collector nesnesi olduğu için kullanmıyoruz. Sadece örnek için tanımladık, gerçek uygulamada kullanmayacağız.
-        _kategoriRepository.Ekle(ekle);//kategori ekleme işlemi yapıyoruz.
+            ekle.Adi = kategoriler.Adi;
+            ekle.EklenmeTarihi = DateTime.Now;
+            ekle.EkleyenId = 1;//şimdilik ekleyen id'sini 1 yapıyoruz.
+                               //_kategoriRepository1.Ekle(ekle);//kategori ekleme işlemi yapıyoruz ama garbage collector nesnesi olduğu için kullanmıyoruz. Sadece örnek için tanımladık, gerçek uygulamada kullanmayacağız.
+            _kategoriRepository.Ekle(ekle);//kategori ekleme işlemi yapıyoruz.
 
-        return ekle;
+            return ekle;
+        }
+        catch (Exception)
+        {
+            return null;   
+        }
+
 
     }
+
 
     public List<Kategoriler> List()
     {
         return _kategoriRepository.HepsiniListele();
+    }
+    public Kategoriler GetirIdIle(int id)
+    {
+      return _kategoriRepository.GetirIdIle(id);
+    }
+
+    public Kategoriler Guncelle(int id, string adi)
+    {
+        try
+        {
+            Kategoriler guncelle = _kategoriRepository.GetirIdIle(id);
+
+            if (guncelle == null)
+            {
+                return null;
+            }
+            guncelle.Adi = adi;
+            _kategoriRepository.Guncelle(guncelle);
+            return guncelle;
+        }
+        catch (Exception)
+        {
+            return null;
+        }
     }
 }
