@@ -10,11 +10,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.16" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Ders4_1_BLL\Ders4_1_BLL.csproj" />
-    <ProjectReference Include="..\Ders4_1_DLL\Ders4_1_DLL.csproj" />
-  </ItemGroup>
-
 
 
   
